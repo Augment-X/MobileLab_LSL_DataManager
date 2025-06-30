@@ -215,7 +215,9 @@ namespace DataManager
 
             public void SaveRecord()
             {
-                var directory = $"{Record.DataPath}\\{Record.Project}\\{Record.Experiment}\\{Record.Session}\\{Record.Subject}";
+                //CHANGE
+                //var directory = $"{Record.DataPath}\\{Record.Project}\\{Record.Experiment}\\{Record.Session}\\{Record.Subject}";
+                var directory = $"{Record.DataPath}";
                 if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 
                 string filenames = "";
@@ -223,9 +225,16 @@ namespace DataManager
                 {
                     if (stream.RecordedBytes > 0)
                     {
-                        var subject = (Record.Subject != "") ? $"_{Record.Subject}" : "";
-                        var filename = $"{Record.Session}{subject}_{stream.Name}_{stream.Type}";
+                        //CHANGE
+                        //var subject = (Record.Subject != "") ? $"_{Record.Subject}" : "";
+                        //var filename = $"{Record.Session}{subject}_{stream.Name}_{stream.Type}";
+                        //filenames += filename + " ";
+
+
+                        var filename = $"{stream.Name}_{ stream.Type}";
                         filenames += filename + " ";
+
+
                         File.WriteAllText(directory + @"\" + filename + ".csv", stream.GetRecordData());
                         File.WriteAllText(directory + @"\" + filename + ".json", stream.GetRecordMeta());
                     }
@@ -238,7 +247,10 @@ namespace DataManager
             }
             public void SaveSteps(List<(DateTime, string)> steps)
             {
-                var directory = $"{Record.DataPath}\\{Record.Project}\\{Record.Experiment}\\{Record.Session}\\{Record.Subject}";
+                //CHANGE
+                //var directory = $"{Record.DataPath}\\{Record.Project}\\{Record.Experiment}\\{Record.Session}\\{Record.Subject}";
+                var directory = $"{Record.DataPath}";
+
                 if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 
                 StringBuilder csv = new StringBuilder();

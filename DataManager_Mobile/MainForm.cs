@@ -393,116 +393,116 @@ namespace DataManager
 
         private void tabRecord_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if (e.KeyValue == Convert.ToChar(Keys.Enter))
-            {
-                var regexItem = new Regex("^[a-zA-Z0-9 _/-]*$");
+            //if (e.KeyValue == Convert.ToChar(Keys.Enter))
+            //{
+            //    var regexItem = new Regex("^[a-zA-Z0-9 _/-]*$");
 
-                if (sender.Equals(tbProject))
-                {
-                    if (tbProject.Text != "" && regexItem.IsMatch(tbProject.Text))
-                    {
-                        configurator.Record.Project = tbProject.Text;
-                        tbExperiment.Enabled = true;
-                        tbExperiment.Focus();
-                    }
-                    else
-                    {
-                        PrintInfo(new Info("Please enter a valid project name", Info.Mode.Error));
-                    }
-                }
-                else if (sender.Equals(tbExperiment))
-                {
-                    if (tbExperiment.Text != "" && regexItem.IsMatch(tbExperiment.Text))
-                    {
-                        configurator.Record.Experiment = tbExperiment.Text;
-                        tbSession.Enabled = true;
-                        tbSession.Focus();
-                    }
-                    else
-                    {
-                        PrintInfo(new Info("Please enter a valid experiment name", Info.Mode.Error));
-                    }
-                }
-                else if (sender.Equals(tbSession))
-                {
-                    if (tbSession.Text != "" && regexItem.IsMatch(tbSession.Text))
-                    {
-                        configurator.Record.Session = tbSession.Text;
-                        tbSubject.Enabled = true;
-                        tbSubject.Focus();
+            //    if (sender.Equals(tbProject))
+            //    {
+            //        if (tbProject.Text != "" && regexItem.IsMatch(tbProject.Text))
+            //        {
+            //            configurator.Record.Project = tbProject.Text;
+            //            tbExperiment.Enabled = true;
+            //            tbExperiment.Focus();
+            //        }
+            //        else
+            //        {
+            //            PrintInfo(new Info("Please enter a valid project name", Info.Mode.Error));
+            //        }
+            //    }
+            //    else if (sender.Equals(tbExperiment))
+            //    {
+            //        if (tbExperiment.Text != "" && regexItem.IsMatch(tbExperiment.Text))
+            //        {
+            //            configurator.Record.Experiment = tbExperiment.Text;
+            //            tbSession.Enabled = true;
+            //            tbSession.Focus();
+            //        }
+            //        else
+            //        {
+            //            PrintInfo(new Info("Please enter a valid experiment name", Info.Mode.Error));
+            //        }
+            //    }
+            //    else if (sender.Equals(tbSession))
+            //    {
+            //        if (tbSession.Text != "" && regexItem.IsMatch(tbSession.Text))
+            //        {
+            //            configurator.Record.Session = tbSession.Text;
+            //            tbSubject.Enabled = true;
+            //            tbSubject.Focus();
 
-                    }
-                    else
-                    {
-                        PrintInfo(new Info("Please enter a valid session name", Info.Mode.Error));
-                    }
-                }
-                else if (sender.Equals(tbSubject))
-                {
-                    if (regexItem.IsMatch(tbSubject.Text))
-                    {
-                        configurator.Record.Subject = tbSubject.Text;
-                        btConfirm.Enabled = true;
-                        PrintInfo(new Info("Click confirm to enable recording. \n" +
-                                 "⚠ Warning: Existing logs with the same reference will be overwritten.", Info.Mode.CriticalEvent));
-                    }
-                    else
-                    {
-                        PrintInfo(new Info("Please enter a valid subject name", Info.Mode.Error));
-                    }
-                }
-            }
+            //        }
+            //        else
+            //        {
+            //            PrintInfo(new Info("Please enter a valid session name", Info.Mode.Error));
+            //        }
+            //    }
+            //    else if (sender.Equals(tbSubject))
+            //    {
+            //        if (regexItem.IsMatch(tbSubject.Text))
+            //        {
+            //            configurator.Record.Subject = tbSubject.Text;
+            //            btConfirm.Enabled = true;
+            //            PrintInfo(new Info("Click confirm to enable recording. \n" +
+            //                     "⚠ Warning: Existing logs with the same reference will be overwritten.", Info.Mode.CriticalEvent));
+            //        }
+            //        else
+            //        {
+            //            PrintInfo(new Info("Please enter a valid subject name", Info.Mode.Error));
+            //        }
+            //    }
+            //}
         }
 
         private void tabRecord_GotFocus(object sender, EventArgs e)
         {
-            var currentPath = "";
-            if (sender.Equals(tbProject))
-            {
-                currentPath = tbDataPath.Text;
-            }
-            else if (sender.Equals(tbExperiment))
-            {
-                currentPath = tbDataPath.Text + "\\" + tbProject.Text;
-            }
-            else if (sender.Equals(tbSession))
-            {
-                currentPath = tbDataPath.Text + "\\" + tbProject.Text + "\\" + tbExperiment.Text;
-            }
-            else if (sender.Equals(tbSubject))
-            {
-                currentPath = tbDataPath.Text + "\\" + tbProject.Text + "\\" + tbExperiment.Text + "\\" + tbSession.Text;
-            }
+            //var currentPath = "";
+            //if (sender.Equals(tbProject))
+            //{
+            //    currentPath = tbDataPath.Text;
+            //}
+            //else if (sender.Equals(tbExperiment))
+            //{
+            //    currentPath = tbDataPath.Text + "\\" + tbProject.Text;
+            //}
+            //else if (sender.Equals(tbSession))
+            //{
+            //    currentPath = tbDataPath.Text + "\\" + tbProject.Text + "\\" + tbExperiment.Text;
+            //}
+            //else if (sender.Equals(tbSubject))
+            //{
+            //    currentPath = tbDataPath.Text + "\\" + tbProject.Text + "\\" + tbExperiment.Text + "\\" + tbSession.Text;
+            //}
 
-            if (Directory.Exists(currentPath))
-            {
-                var source = new AutoCompleteStringCollection();
-                string[] subdirs = Directory.GetDirectories(currentPath)
-                        .Select(Path.GetFileName)
-                        .ToArray();
-                source.AddRange(subdirs);
-                ((TextBox)sender).AutoCompleteCustomSource = source;
-            }
+            //if (Directory.Exists(currentPath))
+            //{
+            //    var source = new AutoCompleteStringCollection();
+            //    string[] subdirs = Directory.GetDirectories(currentPath)
+            //            .Select(Path.GetFileName)
+            //            .ToArray();
+            //    source.AddRange(subdirs);
+            //    ((TextBox)sender).AutoCompleteCustomSource = source;
+            //}
         }
 
         private void tabRecord_LostFocus(object sender, EventArgs e)
         {
-            if (sender.Equals(tbProject))
-            {
-                tbProject.Text = configurator?.Record.Project;
-            }
-            else if (sender.Equals(tbExperiment))
-            {
-                tbExperiment.Text = configurator?.Record.Experiment;
-            }
-            else if (sender.Equals(tbSession))
-            {
-                tbSession.Text = configurator?.Record.Session;
-            }
-            else if (sender.Equals(tbSubject))
-            {
-                tbSubject.Text = configurator?.Record.Subject;
-            }
+            //if (sender.Equals(tbProject))
+            //{
+            //    tbProject.Text = configurator?.Record.Project;
+            //}
+            //else if (sender.Equals(tbExperiment))
+            //{
+            //    tbExperiment.Text = configurator?.Record.Experiment;
+            //}
+            //else if (sender.Equals(tbSession))
+            //{
+            //    tbSession.Text = configurator?.Record.Session;
+            //}
+            //else if (sender.Equals(tbSubject))
+            //{
+            //    tbSubject.Text = configurator?.Record.Subject;
+            //}
         }
 
         private void btConfirm_Click(object sender, EventArgs e)
@@ -517,7 +517,9 @@ namespace DataManager
 
             configurator.Record.DataPath = tbDataPath.Text;
 
-            this.Text += $" ***New Recording: {configurator.Record.Project} - {configurator.Record.Experiment} - {configurator.Record.Session} - {configurator.Record.Subject}";
+            //CHANGE
+            //this.Text += $" ***New Recording: {configurator.Record.Project} - {configurator.Record.Experiment} - {configurator.Record.Session} - {configurator.Record.Subject}";
+            this.Text += $" ***New Recording: {tbDataPath.Text}";
             PrintInfo(new Info("Recording session is registered. Ready to record.", Info.Mode.Event));
         }
 

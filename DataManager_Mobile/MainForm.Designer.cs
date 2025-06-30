@@ -214,7 +214,7 @@
             // btRecord
             // 
             btRecord.Enabled = false;
-            btRecord.Location = new System.Drawing.Point(625, 292);
+            btRecord.Location = new System.Drawing.Point(625, 100);
             btRecord.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             btRecord.Name = "btRecord";
             btRecord.Size = new System.Drawing.Size(317, 161);
@@ -226,7 +226,7 @@
             // cbUdpStream
             // 
             cbUdpStream.AutoSize = true;
-            cbUdpStream.Enabled = false;
+            cbUdpStream.Enabled = true;
             cbUdpStream.Location = new System.Drawing.Point(381, 273);
             cbUdpStream.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             cbUdpStream.Name = "cbUdpStream";
@@ -313,78 +313,77 @@
             // 
             // tbProject
             // 
-            tbProject.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            tbProject.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            tbProject.Location = new System.Drawing.Point(735, 49);
-            tbProject.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            tbProject.Name = "tbProject";
-            tbProject.Size = new System.Drawing.Size(207, 31);
-            tbProject.TabIndex = 3;
-            tbProject.GotFocus += tabRecord_GotFocus;
-            tbProject.KeyPress += tabRecord_KeyPress;
-            tbProject.LostFocus += tabRecord_LostFocus;
-            tbProject.PreviewKeyDown += tabRecord_PreviewKeyDown;
+                //tbProject.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+                //tbProject.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+                //tbProject.Location = new System.Drawing.Point(735, 49);
+                //tbProject.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+                //tbProject.Name = "tbProject";
+                //tbProject.Size = new System.Drawing.Size(207, 31);
+                //tbProject.TabIndex = 3;
+                //tbProject.GotFocus += tabRecord_GotFocus;
+                //tbProject.KeyPress += tabRecord_KeyPress;
+                //tbProject.LostFocus += tabRecord_LostFocus;
+                //tbProject.PreviewKeyDown += tabRecord_PreviewKeyDown;
             // 
             // tbExperiment
             // 
-            tbExperiment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            tbExperiment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            tbExperiment.Enabled = false;
-            tbExperiment.Location = new System.Drawing.Point(735, 92);
-            tbExperiment.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            tbExperiment.Name = "tbExperiment";
-            tbExperiment.Size = new System.Drawing.Size(207, 31);
-            tbExperiment.TabIndex = 4;
-            tbExperiment.GotFocus += tabRecord_GotFocus;
-            tbExperiment.KeyPress += tabRecord_KeyPress;
-            tbExperiment.LostFocus += tabRecord_LostFocus;
-            tbExperiment.PreviewKeyDown += tabRecord_PreviewKeyDown;
-            // 
+                //tbExperiment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+                //tbExperiment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+                //tbExperiment.Enabled = false;
+                //tbExperiment.Location = new System.Drawing.Point(735, 92);
+                //tbExperiment.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+                //tbExperiment.Name = "tbExperiment";
+                //tbExperiment.Size = new System.Drawing.Size(207, 31);
+                //tbExperiment.TabIndex = 4;
+                //tbExperiment.GotFocus += tabRecord_GotFocus;
+                //tbExperiment.KeyPress += tabRecord_KeyPress;
+                //tbExperiment.LostFocus += tabRecord_LostFocus;
+                //tbExperiment.PreviewKeyDown += tabRecord_PreviewKeyDown;
+            // 49
             // tbSession
             // 
-            tbSession.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            tbSession.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            tbSession.Enabled = false;
-            tbSession.Location = new System.Drawing.Point(735, 135);
-            tbSession.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            tbSession.Name = "tbSession";
-            tbSession.Size = new System.Drawing.Size(207, 31);
-            tbSession.TabIndex = 5;
-            tbSession.GotFocus += tabRecord_GotFocus;
-            tbSession.KeyPress += tabRecord_KeyPress;
-            tbSession.LostFocus += tabRecord_LostFocus;
-            tbSession.PreviewKeyDown += tabRecord_PreviewKeyDown;
+                //tbSession.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+                //tbSession.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+                //tbSession.Enabled = false;
+                //tbSession.Location = new System.Drawing.Point(735, 135);
+                //tbSession.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+                //tbSession.Name = "tbSession";
+                //tbSession.Size = new System.Drawing.Size(207, 31);
+                //tbSession.TabIndex = 5;
+                //tbSession.GotFocus += tabRecord_GotFocus;
+                //tbSession.KeyPress += tabRecord_KeyPress;
+                //tbSession.LostFocus += tabRecord_LostFocus;
+                //tbSession.PreviewKeyDown += tabRecord_PreviewKeyDown;
             // 
             // lbSubject
             // 
-            lbSubject.BackColor = System.Drawing.Color.DarkGray;
-            lbSubject.ForeColor = System.Drawing.Color.White;
-            lbSubject.Location = new System.Drawing.Point(625, 178);
-            lbSubject.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            lbSubject.Name = "lbSubject";
-            lbSubject.Size = new System.Drawing.Size(100, 29);
-            lbSubject.TabIndex = 6;
-            lbSubject.Text = "Subject:";
+                //lbSubject.BackColor = System.Drawing.Color.DarkGray;
+                //lbSubject.ForeColor = System.Drawing.Color.White;
+                //lbSubject.Location = new System.Drawing.Point(625, 178);
+                //lbSubject.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+                //lbSubject.Name = "lbSubject";
+                //lbSubject.Size = new System.Drawing.Size(100, 29);
+                //lbSubject.TabIndex = 6;
+                //lbSubject.Text = "Subject:";
             // 
             // tbSubject
             // 
-            tbSubject.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            tbSubject.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            tbSubject.Enabled = false;
-            tbSubject.Location = new System.Drawing.Point(735, 178);
-            tbSubject.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            tbSubject.Name = "tbSubject";
-            tbSubject.Size = new System.Drawing.Size(207, 31);
-            tbSubject.TabIndex = 6;
-            tbSubject.GotFocus += tabRecord_GotFocus;
-            tbSubject.KeyPress += tabRecord_KeyPress;
-            tbSubject.LostFocus += tabRecord_LostFocus;
-            tbSubject.PreviewKeyDown += tabRecord_PreviewKeyDown;
+                //tbSubject.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+                //tbSubject.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+                //tbSubject.Enabled = false;
+                //tbSubject.Location = new System.Drawing.Point(735, 178);
+                //tbSubject.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+                //tbSubject.Name = "tbSubject";
+                //tbSubject.Size = new System.Drawing.Size(207, 31);
+                //tbSubject.TabIndex = 6;
+                //tbSubject.GotFocus += tabRecord_GotFocus;
+                //tbSubject.KeyPress += tabRecord_KeyPress;
+                //tbSubject.LostFocus += tabRecord_LostFocus;
+                //tbSubject.PreviewKeyDown += tabRecord_PreviewKeyDown;
             // 
             // btConfirm
             // 
-            btConfirm.Enabled = false;
-            btConfirm.Location = new System.Drawing.Point(625, 221);
+            btConfirm.Location = new System.Drawing.Point(625, 49);
             btConfirm.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             btConfirm.Name = "btConfirm";
             btConfirm.Size = new System.Drawing.Size(317, 38);
@@ -395,36 +394,36 @@
             // 
             // lbProject
             // 
-            lbProject.BackColor = System.Drawing.Color.DarkGray;
-            lbProject.ForeColor = System.Drawing.Color.White;
-            lbProject.Location = new System.Drawing.Point(625, 49);
-            lbProject.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            lbProject.Name = "lbProject";
-            lbProject.Size = new System.Drawing.Size(100, 29);
-            lbProject.TabIndex = 3;
-            lbProject.Text = "Project:";
+                //lbProject.BackColor = System.Drawing.Color.DarkGray;
+                //lbProject.ForeColor = System.Drawing.Color.White;
+                //lbProject.Location = new System.Drawing.Point(625, 49);
+                //lbProject.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+                //lbProject.Name = "lbProject";
+                //lbProject.Size = new System.Drawing.Size(100, 29);
+                //lbProject.TabIndex = 3;
+                //lbProject.Text = "Project:";
             // 
             // lbExperiment
             // 
-            lbExperiment.BackColor = System.Drawing.Color.DarkGray;
-            lbExperiment.ForeColor = System.Drawing.Color.White;
-            lbExperiment.Location = new System.Drawing.Point(625, 92);
-            lbExperiment.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            lbExperiment.Name = "lbExperiment";
-            lbExperiment.Size = new System.Drawing.Size(100, 29);
-            lbExperiment.TabIndex = 4;
-            lbExperiment.Text = "Experiment:";
+                //lbExperiment.BackColor = System.Drawing.Color.DarkGray;
+                //lbExperiment.ForeColor = System.Drawing.Color.White;
+                //lbExperiment.Location = new System.Drawing.Point(625, 92);
+                //lbExperiment.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+                //lbExperiment.Name = "lbExperiment";
+                //lbExperiment.Size = new System.Drawing.Size(100, 29);
+                //lbExperiment.TabIndex = 4;
+                //lbExperiment.Text = "Experiment:";
             // 
             // lbSession
             // 
-            lbSession.BackColor = System.Drawing.Color.DarkGray;
-            lbSession.ForeColor = System.Drawing.Color.White;
-            lbSession.Location = new System.Drawing.Point(625, 135);
-            lbSession.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            lbSession.Name = "lbSession";
-            lbSession.Size = new System.Drawing.Size(100, 29);
-            lbSession.TabIndex = 5;
-            lbSession.Text = "Session:";
+                //lbSession.BackColor = System.Drawing.Color.DarkGray;
+                //lbSession.ForeColor = System.Drawing.Color.White;
+                //lbSession.Location = new System.Drawing.Point(625, 135);
+                //lbSession.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+                //lbSession.Name = "lbSession";
+                //lbSession.Size = new System.Drawing.Size(100, 29);
+                //lbSession.TabIndex = 5;
+                //lbSession.Text = "Session:";
             // 
             // tabPageMultiplot
             // 
