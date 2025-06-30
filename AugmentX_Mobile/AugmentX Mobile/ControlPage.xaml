@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AugmentX_Mobile.ControlPage"
+             xmlns:viewmodel="clr-namespace:AugmentX_Mobile.ViewModel"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             Title="Control Page">
+    <Grid ColumnDefinitions="0.2*,0.2*,0.2*,0.2*"
+          RowDefinitions="0.1*,*,0.3*,0.1*"
+          ColumnSpacing="10"
+          RowSpacing="10"
+          Margin="5">
+        <Button x:Name="BtnRecord"
+                Grid.ColumnSpan="5"
+                Grid.Row="0"
+                Text="{Binding RecordName}"
+                Command="{Binding TapCommand}"/>   
+        
+        <Grid Grid.Row="1" Grid.ColumnSpan="5">
+            <lvc:CartesianChart
+                Series="{Binding Series}" EasingFunction="{x:Null}" XAxes="{Binding NullAxes}">
+            </lvc:CartesianChart>
+        </Grid>
+       
+        <!--<VerticalStackLayout Grid.Row="0"
+                             Grid.ColumnSpan="5">
+            <HorizontalStackLayout >
+                <Label Text="IP Address: "/>
+                <Label Text="{Binding Ipaddress}"/>
+            </HorizontalStackLayout>
+            
+            <ScrollView Orientation="Both">
+            <CollectionView ItemsSource="{Binding Items}">
+            </CollectionView>
+            </ScrollView>
+        </VerticalStackLayout>-->
+
+        <Button Grid.Column="0"
+                Grid.Row="2"
+                Margin="5,1,1,1"
+                Text="B"
+                x:Name="B"
+                Background="Blue"
+                Command="{Binding PressCommand}"
+                CommandParameter="{Binding Text, Source={x:Reference B}}"/>
+        <Button Grid.Column="1"
+                Grid.Row="2"
+                Margin="1"
+                Text="G"
+                x:Name="G"
+                Background="Green"
+                Command="{Binding PressCommand}"
+                CommandParameter="{Binding Text, Source={x:Reference G}}"/>
+        <Button Grid.Column="2"
+                Grid.Row="2"
+                Margin="1"
+                Text="Y"
+                x:Name="Y"
+                Background="Gold"
+                Command="{Binding PressCommand}"
+                CommandParameter="{Binding Text, Source={x:Reference Y}}"/>
+        <Button Grid.Column="3"
+                Grid.Row="2"
+                Margin="1,1,5,1"
+                Text="R"
+                x:Name="R"
+                Command="{Binding PressCommand}"
+                CommandParameter="{Binding Text, Source={x:Reference R}}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Red"/>
+                    <Style.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsToggled}" Value="True">
+                            <Setter Property="Background" Value="DarkRed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</ContentPage>

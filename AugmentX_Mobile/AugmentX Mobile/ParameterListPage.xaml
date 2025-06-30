@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AugmentX_Mobile.ParameterListPage"
+             xmlns:viewmodel="clr-namespace:AugmentX_Mobile.ViewModel"
+             Title="List of available parameters">
+    <Grid Padding="10" RowDefinitions="0.1*,0.1*,0.6*,0.2*">
+        <Label Text="{Binding NameDisplay}" FontAttributes="Bold" />
+        <Label Grid.Row="1">
+            <Label.FormattedText>
+                <FormattedString>
+                    <!-- static text + first bound value -->
+                    <Span Text="Total parameters selected: " />
+                    <Span Text="{Binding SelectedCount, Source={x:Static viewmodel:SelectionService.Instance}}" />
+                    <!-- separator -->
+                    <Span Text="/"/>
+                    <!-- second bound value -->
+                    <Span Text="{Binding MaxCount, Source={x:Static viewmodel:SelectionService.Instance}}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+
+        <ScrollView Grid.Row="2">
+            <CollectionView ItemsSource="{Binding Parameters}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="viewmodel:ParameterItem">
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <CheckBox IsChecked="{Binding IsSelected}" />
+                            <Label Text="{Binding Name}" VerticalOptions="Center" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <Button Text="Back to Names" Grid.Row="3"
+            Command="{Binding GoBackCommand}" />
+    </Grid>
+</ContentPage>

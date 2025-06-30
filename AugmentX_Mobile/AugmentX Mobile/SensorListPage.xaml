@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AugmentX_Mobile.SensorListPage"
+             xmlns:viewmodel="clr-namespace:AugmentX_Mobile.ViewModel"
+             Title="List of available sensors">
+    <Grid Padding="10" RowDefinitions="0.1*,0.1*,0.6*,0.2*">
+        <ScrollView Grid.Row="2">
+            <CollectionView ItemsSource="{Binding Sensors}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedSensor, Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding SelectionChangedCommand}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="viewmodel:SensorItem">
+                        <Grid Padding="10">
+                            <Label Text="{Binding DisplayName}"
+                                       FontSize="Medium" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <Button Text="Go To Recoding Menu" Grid.Row="3"
+    Command="{Binding TapCommand}" />
+    </Grid>
+</ContentPage>
