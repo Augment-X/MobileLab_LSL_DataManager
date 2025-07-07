@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\rodol\\Documents\\GitHub\\MobileLab_LSL_DataManager\\AugmentX_Mobile\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{88BD962D-BC7F-4AB8-B248-EFE884267958}|AugmentX Mobile\\AugmentX Mobile.csproj|c:\\users\\rodol\\documents\\github\\mobilelab_lsl_datamanager\\augmentx_mobile\\augmentx mobile\\viewmodel\\controlviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88BD962D-BC7F-4AB8-B248-EFE884267958}|AugmentX Mobile\\AugmentX Mobile.csproj|solutionrelative:augmentx mobile\\viewmodel\\controlviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88BD962D-BC7F-4AB8-B248-EFE884267958}|AugmentX Mobile\\AugmentX Mobile.csproj|c:\\users\\rodol\\documents\\github\\mobilelab_lsl_datamanager\\augmentx_mobile\\augmentx mobile\\udpcommunication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88BD962D-BC7F-4AB8-B248-EFE884267958}|AugmentX Mobile\\AugmentX Mobile.csproj|solutionrelative:augmentx mobile\\udpcommunication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88BD962D-BC7F-4AB8-B248-EFE884267958}|AugmentX Mobile\\AugmentX Mobile.csproj|c:\\users\\rodol\\documents\\github\\mobilelab_lsl_datamanager\\augmentx_mobile\\augmentx mobile\\viewmodel\\sensorlistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88BD962D-BC7F-4AB8-B248-EFE884267958}|AugmentX Mobile\\AugmentX Mobile.csproj|solutionrelative:augmentx mobile\\viewmodel\\sensorlistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88BD962D-BC7F-4AB8-B248-EFE884267958}|AugmentX Mobile\\AugmentX Mobile.csproj|c:\\users\\rodol\\documents\\github\\mobilelab_lsl_datamanager\\augmentx_mobile\\augmentx mobile\\controlpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88BD962D-BC7F-4AB8-B248-EFE884267958}|AugmentX Mobile\\AugmentX Mobile.csproj|solutionrelative:augmentx mobile\\controlpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ControlPage.xaml",
+              "DocumentMoniker": "C:\\Users\\rodol\\Documents\\GitHub\\MobileLab_LSL_DataManager\\AugmentX_Mobile\\AugmentX Mobile\\ControlPage.xaml",
+              "RelativeDocumentMoniker": "AugmentX Mobile\\ControlPage.xaml",
+              "ToolTip": "C:\\Users\\rodol\\Documents\\GitHub\\MobileLab_LSL_DataManager\\AugmentX_Mobile\\AugmentX Mobile\\ControlPage.xaml",
+              "RelativeToolTip": "AugmentX Mobile\\ControlPage.xaml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-07-04T13:08:11.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ControlViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\rodol\\Documents\\GitHub\\MobileLab_LSL_DataManager\\AugmentX_Mobile\\AugmentX Mobile\\ViewModel\\ControlViewModel.cs",
+              "RelativeDocumentMoniker": "AugmentX Mobile\\ViewModel\\ControlViewModel.cs",
+              "ToolTip": "C:\\Users\\rodol\\Documents\\GitHub\\MobileLab_LSL_DataManager\\AugmentX_Mobile\\AugmentX Mobile\\ViewModel\\ControlViewModel.cs",
+              "RelativeToolTip": "AugmentX Mobile\\ViewModel\\ControlViewModel.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAcwC0AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T13:07:54.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SensorListViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\rodol\\Documents\\GitHub\\MobileLab_LSL_DataManager\\AugmentX_Mobile\\AugmentX Mobile\\ViewModel\\SensorListViewModel.cs",
+              "RelativeDocumentMoniker": "AugmentX Mobile\\ViewModel\\SensorListViewModel.cs",
+              "ToolTip": "C:\\Users\\rodol\\Documents\\GitHub\\MobileLab_LSL_DataManager\\AugmentX_Mobile\\AugmentX Mobile\\ViewModel\\SensorListViewModel.cs",
+              "RelativeToolTip": "AugmentX Mobile\\ViewModel\\SensorListViewModel.cs",
+              "ViewState": "AgIAAKoAAAAAAAAAAAAAALcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T12:12:02.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UDPCommunication.cs",
+              "DocumentMoniker": "C:\\Users\\rodol\\Documents\\GitHub\\MobileLab_LSL_DataManager\\AugmentX_Mobile\\AugmentX Mobile\\UDPCommunication.cs",
+              "RelativeDocumentMoniker": "AugmentX Mobile\\UDPCommunication.cs",
+              "ToolTip": "C:\\Users\\rodol\\Documents\\GitHub\\MobileLab_LSL_DataManager\\AugmentX_Mobile\\AugmentX Mobile\\UDPCommunication.cs",
+              "RelativeToolTip": "AugmentX Mobile\\UDPCommunication.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T10:25:21.356Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

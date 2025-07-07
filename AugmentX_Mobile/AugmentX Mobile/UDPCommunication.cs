@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AugmentX_Mobile
 {
+    /// <summary>
+    /// 
+    /// </summary>
     static internal class AugmentXPartner
     {
         private static readonly UdpClient udpClient = new();

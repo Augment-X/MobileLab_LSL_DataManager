@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
-using System.Windows.Forms;
-using System.Diagnostics;
 
 namespace DataManager
 {
@@ -18,9 +14,10 @@ namespace DataManager
         public static event EventHandler<MobileCommunicationDataEventArgs> DataPacketReceived;
 
         public static int Port { get; set; } = 1100;
-        public static bool Recording = false;
-        public static bool UpdateLists = true;
-        private static System.Timers.Timer timer_1s = new() { AutoReset = true, Interval = 1000, Enabled = true };
+        public static bool Recording { get; set; } = false;
+        public static bool ThreadRunning { get; set; } = false;
+
+        public static List<(DateTime, string)> Steps = new();
 
         static Thread MobileDataThread;
         static IPEndPoint sender = new(IPAddress.Any, 0);
@@ -34,31 +31,37 @@ namespace DataManager
             if (!MobileDataThread.IsAlive) MobileDataThread.Start();
         }
 
-        public static void ChangePort(int port) { ipep.Port = port; }
-
-        static async void UDPThread()
+        public static void StopDataReception()
         {
-            byte[] data;
-
-            timer_1s.Elapsed += Timer_1s_Elapsed;
-
-            while (true)
-            {
-                data = newsock.Receive(ref sender);
-
-                if (data.Length == 8 && data.SequenceEqual(new byte[] { 1, 0, 1, 0, 1, 0, 1, 1 })) { newsock.Send(new byte[] { 1, 1, 0, 1, 0, 1, 0, 1 }, 8, sender); }
-                else
-                { 
-                    string message = Encoding.ASCII.GetString(data, 1, data.Length-1);
-                    var e = new MobileCommunicationDataEventArgs() { MessageID = (Commands)data[0], MessageContent = message };
-                    DataPacketReceived?.Invoke(null, e);
-                }
-            }
+            if (MobileDataThread.IsAlive)
+            { ThreadRunning = false; newsock.Close(); }
         }
 
-        private static void Timer_1s_Elapsed(object sender, ElapsedEventArgs e)
+        public static void ChangePort(int port) { ipep.Port = port; }
+
+        static void UDPThread()
         {
-            UpdateLists = true;
+            byte[] data;
+            ThreadRunning = true;
+
+            newsock.Client.SendBufferSize = 65535; // 64 KB
+
+            while (ThreadRunning)
+            {
+                try
+                {
+                    data = newsock.Receive(ref sender);
+
+                    if (data.Length == 8 && data.SequenceEqual(new byte[] { 1, 0, 1, 0, 1, 0, 1, 1 })) { newsock.Send(new byte[] { 1, 1, 0, 1, 0, 1, 0, 1 }, 8, sender); }
+                    else
+                    {
+                        string message = Encoding.ASCII.GetString(data, 1, data.Length - 1);
+                        var e = new MobileCommunicationDataEventArgs() { MessageID = (Commands)data[0], MessageContent = message };
+                        DataPacketReceived?.Invoke(null, e);
+                    }
+                }
+                catch (Exception) { }
+            }
         }
 
         public enum Commands
@@ -78,16 +81,9 @@ namespace DataManager
 
         public static async Task Send(byte[] data)
         {
-            if(data.Length < 60000)
-            {
-                newsock.Client.SendBufferSize = 64000;
-                newsock.Send(data, data.Length, sender);
-            }
-            else
-            {
-                data = Encoding.ASCII.GetBytes("File too large");
-                newsock.Send(data, data.Length, sender);
-            }
+            if(data.Length >= 64000) { data = Encoding.ASCII.GetBytes("File too large"); }
+
+            try { await newsock.SendAsync(data, data.Length, sender); } catch { }
         }
 
         public static string GetLocalIPAddress()
@@ -104,7 +100,6 @@ namespace DataManager
             return resp;
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
-
     }
 
     public class MobileCommunicationDataEventArgs : EventArgs

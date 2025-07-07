@@ -58,7 +58,7 @@ namespace AugmentX_Mobile.ViewModel
         {
             if (com == AugmentXPartner.Commands.Subscribe && arg1 != null)
             {
-                if (arg1 == "reset") { sensors.Clear(); }
+                if (arg1 == "reset") { sensors.Clear(); SelectionService.Clear(); }
                 else
                 {
                     string[] values = arg1.Split(',');
@@ -169,7 +169,7 @@ namespace AugmentX_Mobile.ViewModel
         }
 
         [ObservableProperty]
-        public int maxCount = 5;
+        public int maxCount = 8;
 
         public static void UpdateSelection(ParameterItem item, bool isSelected)
         {
@@ -188,6 +188,12 @@ namespace AugmentX_Mobile.ViewModel
                 Instance.AllSelected.Remove(item);
             }
             Instance.SelectedCount = Instance.AllSelected.Count;
+        }
+
+        public static void Clear()
+        {
+            Instance.AllSelected.Clear();
+            Instance.SelectedCount = 0;
         }
     }
 

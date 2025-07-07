@@ -122,7 +122,7 @@ namespace DataManager
                     if (ChFormat == ChannelFormat.Double64 || ChFormat == ChannelFormat.Float32) precision = 1; 
                     Channels.Add(new ChannelInfo()
                     {
-                        Label = "Ch",
+                        Label = "Ch" + i.ToString(),
                         Unit = "",
                         Precision = precision
                     });                    

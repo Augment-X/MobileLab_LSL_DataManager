@@ -1,31 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "5B9wo51LD/U=",
+  "dgSpecHash": "RX/T/uBF+AE=",
   "success": true,
   "projectFilePath": "C:\\Users\\rodol\\OneDrive - Vrije Universiteit Brussel\\AugmentX\\DataManager - Mobile\\DataManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rodol\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512",
-    "C:\\Users\\rodol\\.nuget\\packages\\microsoft.netcore.platforms\\3.0.0\\microsoft.netcore.platforms.3.0.0.nupkg.sha512",
-    "C:\\Users\\rodol\\.nuget\\packages\\microsoft.win32.systemevents\\4.6.0\\microsoft.win32.systemevents.4.6.0.nupkg.sha512",
+    "C:\\Users\\rodol\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\9.0.6\\microsoft.bcl.asyncinterfaces.9.0.6.nupkg.sha512",
+    "C:\\Users\\rodol\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\rodol\\.nuget\\packages\\scottplot\\4.1.45\\scottplot.4.1.45.nupkg.sha512",
     "C:\\Users\\rodol\\.nuget\\packages\\scottplot.winforms\\4.1.45\\scottplot.winforms.4.1.45.nupkg.sha512",
-    "C:\\Users\\rodol\\.nuget\\packages\\system.drawing.common\\4.6.1\\system.drawing.common.4.6.1.nupkg.sha512",
+    "C:\\Users\\rodol\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\rodol\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\rodol\\.nuget\\packages\\system.io.pipelines\\9.0.6\\system.io.pipelines.9.0.6.nupkg.sha512",
+    "C:\\Users\\rodol\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\rodol\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\rodol\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
-    "C:\\Users\\rodol\\.nuget\\packages\\system.text.json\\6.0.5\\system.text.json.6.0.5.nupkg.sha512"
+    "C:\\Users\\rodol\\.nuget\\packages\\system.text.encodings.web\\9.0.6\\system.text.encodings.web.9.0.6.nupkg.sha512",
+    "C:\\Users\\rodol\\.nuget\\packages\\system.text.json\\9.0.6\\system.text.json.9.0.6.nupkg.sha512",
+    "C:\\Users\\rodol\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "message": "Package 'System.Text.Json' 6.0.5 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
-      "projectPath": "C:\\Users\\rodol\\OneDrive - Vrije Universiteit Brussel\\AugmentX\\DataManager - Mobile\\DataManager.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\rodol\\OneDrive - Vrije Universiteit Brussel\\AugmentX\\DataManager - Mobile\\DataManager.csproj",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net6.0-windows7.0"
-      ]
-    }
-  ]
+  "logs": []
 }

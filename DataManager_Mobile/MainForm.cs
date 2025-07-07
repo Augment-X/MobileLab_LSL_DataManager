@@ -11,13 +11,8 @@ using System.IO;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Linq;
-using System.Text.RegularExpressions;
 using Libfmax;
-
-using System.Net;
-using System.Net.Sockets;
 using System.Text;
-using System.Runtime.CompilerServices;
 
 namespace DataManager
 {
@@ -82,27 +77,37 @@ namespace DataManager
             this.formHeight = this.ClientSize.Height;
 
 
-            //MOBILE_CHANGES add mobile communication event handler and IP data to the window
+            /// MOBILE_CHANGES add mobile communication event handler and IP data to the window
             MobileCommunication.DataPacketReceived += MobileCommunication_DataPacketReceived;
             MobileCommunication.StartDataReception();
             lbIP_Address.Text = "IP Address: " + MobileCommunication.GetLocalIPAddress();
         }
 
-        List<(DateTime, string)> steps = new();
+        /// <summary>
+        /// Handles data received from the mobile partner.
+        /// Catalogs the data and performs actions accordingly.
+        /// </summary> MOBILE_CHANGES
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MobileCommunication_DataPacketReceived(object sender, MobileCommunicationDataEventArgs e)
         {
+            /// The reception is called on a separate thread, Invoke the actions into the main thread
             Invoke(new Action(() =>
             {
-                switch (e.MessageID)
+                switch (e.MessageID) ///Catalog package based on command type
                 {
-                    case MobileCommunication.Commands.Record: steps.Add((DateTime.Now, "START/FINISH")); btRecord_Click(null, null); break;
-                    case MobileCommunication.Commands.Blue: steps.Add((DateTime.Now, "B")); break;
-                    case MobileCommunication.Commands.Green: steps.Add((DateTime.Now, "G")); break;
-                    case MobileCommunication.Commands.Yellow: steps.Add((DateTime.Now, "Y")); break;
-                    case MobileCommunication.Commands.Red: steps.Add((DateTime.Now, "R")); break;
-                    default: /*MobileCommunication.Send(Encoding.ASCII.GetBytes(savedtable));*/ break;
+                    case MobileCommunication.Commands.Record:   /// If a record press was receiver, Add the action to the Steps register
+                                                                /// and press the "Record" button on the main tab.
+                        MobileCommunication.Steps.Add((DateTime.Now, MobileCommunication.Recording?"FINISH":"START")); 
+                        btRecord_Click(null, null); 
+                        break;
+                    case MobileCommunication.Commands.Blue:     /// In case any other button is pressed, save the command in the Steps register
+                    case MobileCommunication.Commands.Green:    ///
+                    case MobileCommunication.Commands.Yellow:   ///
+                    case MobileCommunication.Commands.Red:      ///
+                        MobileCommunication.Steps.Add((DateTime.Now, ((char)(int)e.MessageID).ToString())); 
+                        break;
                 }
-                //PrintInfo(new Info(e.MessageContent, Info.Mode.Event));
             }));
         }
 
@@ -113,8 +118,11 @@ namespace DataManager
                 tokenSource.Cancel();
                 tokenSource.Dispose();
             }
+
             tmFormUpdate.Dispose();
             configurator = null;
+
+            MobileCommunication.StopDataReception(); /// MOBILE_CHANGES - Closes all communication sockets left open when exiting application
         }
 
         private void PrintInfo(Info info, InfoSource infoSource = InfoSource.Main)
@@ -212,9 +220,9 @@ namespace DataManager
             }
         }
 
-        private void btSubscribe_Click(object sender, EventArgs e)
+        private async void btSubscribe_Click(object sender, EventArgs e)
         {
-            //MOBILE_CHANGES Uncheck all and clear streams when Unsubscribing
+            /// MOBILE_CHANGES Uncheck all and clear streams when Unsubscribing
             if (btSubscribeStreams.Text == "Unsubscribe")
             {
                 btListStreams.Enabled = true;
@@ -224,8 +232,6 @@ namespace DataManager
 
                 clbMultiplotStreams.Items.Clear();
                 multiplotter = new DataStreamMultiplotter();
-                configurator.DisconnectUdpStream();
-                cbUdpStream.Enabled = false;
 
                 clbStreams.ItemCheck -= new System.Windows.Forms.ItemCheckEventHandler(clbStreams_ItemCheck);
                 clbStreams.DoubleClick -= new System.EventHandler(clbStreams_DoubleClick);
@@ -234,6 +240,8 @@ namespace DataManager
                     clbStreams.SetItemChecked(i, false);
                 }
                 configurator.ClearStream();
+
+                await MobileCommunication.Send(ASCIIEncoding.ASCII.GetBytes("S" + "reset")); /// Clean the subscribed list in the mobile partner
             }
 
             for (int i = 0; i < clbStreams.Items.Count; i++)
@@ -242,23 +250,13 @@ namespace DataManager
                 {
                     var si = configurator.StreamInfos[i];
 
-                    var udpbytes = ASCIIEncoding.ASCII.GetBytes("S" + clbStreams.Items[i].ToString());
-                    MobileCommunication.Send(udpbytes);
+                    /// MOBILE_CHANGES
+                    var udpbytes = ASCIIEncoding.ASCII.GetBytes("S" + clbStreams.Items[i].ToString()); /// Add an S (Type:Subscribed) at the beginning if the packet so that the Mobile partner can catalog it on reception.
+                    await MobileCommunication.Send(udpbytes);                                          /// Send the data to be added to the subscribed list in the mobile partner
 
                     configurator.AddStream(si);
                 }
             }
-
-            //MOBILE_CHANGES deprecated part of the code
-            //for (int i = 0; i < clbStreams.Items.Count; i++)
-            //{
-            //    if (!clbStreams.GetItemChecked(i))
-            //    {
-            //        clbStreams.Items.RemoveAt(i);
-            //        configurator.StreamInfos = configurator.StreamInfos.Where((source, index) => index != i).ToArray();
-            //        i = i - 1;
-            //    }
-            //}
 
             if (configurator.NbSubscribed > 0)
             {
@@ -350,7 +348,7 @@ namespace DataManager
                         tokenSource.Dispose();
                     }
                     PrintInfo(new Info($"Recording stopped.", Info.Mode.Event));
-                    configurator.SaveSteps(steps);
+                    configurator.SaveSteps(MobileCommunication.Steps);
                     configurator.SaveRecord();
                     tmFormUpdate.Stop();
                     stopWatch.Stop();

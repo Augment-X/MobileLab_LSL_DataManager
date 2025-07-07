@@ -3,9 +3,13 @@
   <PropertyGroup>
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
     <ActiveDebugFramework>net8.0-android</ActiveDebugFramework>
-    <ActiveDebugProfile>Samsung SM-G975F (Android 12.0 - API 31)</ActiveDebugProfile>
-    <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
+    <ActiveDebugProfile>Pixel 5 - API 34 (Android 14.0 - API 34)</ActiveDebugProfile>
+    <SelectedPlatformGroup>Emulator</SelectedPlatformGroup>
     <DefaultDevice>pixel_5_-_api_34</DefaultDevice>
+    <UapAppxPackageBuildMode>SideloadOnly</UapAppxPackageBuildMode>
+    <AppxShowAllApps>False</AppxShowAllApps>
+    <_LastSelectedProfileId>MSIX-win-x86.pubxml</_LastSelectedProfileId>
+    <PackageOptionalProjectsInIdeBuilds>True</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>
   <ItemGroup>
     <MauiXaml Update="ControlPage.xaml">

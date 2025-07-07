@@ -63,9 +63,13 @@
               "target": "Package",
               "version": "[4.1.45, )"
             },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "System.Text.Json": {
               "target": "Package",
-              "version": "[6.0.5, )"
+              "version": "[9.0.6, )"
             }
           },
           "imports": [

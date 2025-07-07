@@ -8,13 +8,6 @@ using System.Text.Json.Serialization;
 using System.Diagnostics;
 using Libfmax;
 using LSL;
-using System.Net;
-using System.Net.Sockets;
-using System.Xml.Linq;
-using static Libfmax.StreamMeta;
-using static System.Windows.Forms.DataFormats;
-using System.Globalization;
-using System.Threading.Channels;
 
 namespace DataManager
 {
@@ -24,11 +17,7 @@ namespace DataManager
         {
             public class RecordMeta
             {
-                public string DataPath { get; set; } = "";
-                public string Project { get; set; } = "";
-                public string Experiment { get; set; } = "";
-                public string Session { get; set; } = "";
-                public string Subject { get; set; } = "";
+                public string DataPath { get; set; } = ""; ///MOBILE_CHANGES - REDUCED //public string Project { get; set; } = ""; . . .
             }
 
             private const int PLOT_TIME_WINDOW = 5000;    // ms
@@ -39,7 +28,7 @@ namespace DataManager
             public string UdpStreamIp { get; set; }
             public int UdpStreamPort { get; set; }
             [JsonIgnore]
-            public bool UdpStreamEnable { get; set; }
+            public bool UdpStreamEnable { get; set; } = true; ///MOBILE_CHANGES // = false;
             [JsonIgnore]
             public RecordMeta Record { get; set; }
             [JsonIgnore]
@@ -63,7 +52,6 @@ namespace DataManager
                 }
             }
             private Dictionary<DataStream, FormPlotter> plotterDict;
-            private UdpClient udpStreamClient;
 
 
             public DataStreamConfigurator()
@@ -71,15 +59,10 @@ namespace DataManager
                 Streams = new List<DataStream>();
                 plotterDict = new Dictionary<DataStream, FormPlotter>();
                 Record = new RecordMeta();
-                udpStreamClient = new UdpClient();
             }
 
             ~DataStreamConfigurator()
-            {
-                // CHECK:what is needed here
-                udpStreamClient.Close();
-                udpStreamClient.Dispose();
-            }
+            {   }
 
             protected virtual void InfoMessage(Info info)
             {
@@ -91,58 +74,55 @@ namespace DataManager
                 InfoMessage(info);
             }
 
-            
-            public void NewDataReceived(object sender, int index)
+            /// <summary>
+            /// Refurbished method to handle data received from an LSL Client,
+            /// formate it into the desired package and send it via UDP to the Mobile companion
+            /// </summary> MOBILE_CHANGES
+            public async void NewDataReceived(object sender, int index)
             {
-                if (UdpStreamEnable)
+                if (UdpStreamEnable) /// Only if UDP data is set to be shared
                 {
                     var stream = (DataStream)sender;
-                    var udpstring = "";
                     byte[] udpbytes;
-                    if (!MobileCommunication.Recording)
+                    string udpstring;
+
+                    /// Get the Name and Type as title, add a separator (\n)
+                    udpstring = stream.Name + " " + stream.Type + "\n";
+
+                    if (!MobileCommunication.Recording) /// In case the App is not recording
                     {
-                        udpstring = stream.Name + " " + stream.Type + "\n";
+                        /// Add all channels by name into a string (to be used as a list of names)
                         for (int i = 0; i < stream.Data.Length; i++)
                         {
+                            /// If channel has no name, add a ch+(number) label in place of the name
                             var channelLabel = stream.Channels[i].Label == "" ? $"ch{i + 1}" : stream.Channels[i].Label;
                             udpstring += $"{channelLabel}";
+                            /// Add a separator
                             if (i < stream.Data.Length - 1) udpstring += ",";
                         }
 
+                        /// Add an L (Type:ListOfChannels) at the beginning if the packet so that the Mobile partner can catalog it on reception
                         udpbytes = ASCIIEncoding.ASCII.GetBytes("L" + udpstring);
-                        MobileCommunication.Send(udpbytes);
                     }
-                    else
+                    else /// In case the App is recording
                     {
-                        udpstring = stream.Name + " " + stream.Type + "\n";
+                        /// Add a timestamp to the data
                         udpstring += $"{(ulong)(Streamer.ConvertLSL2UnixEpoch(stream.Timestamps[index]) * 1.0E09)}";//converted to ns
+                        //udpstring += $"{stream.Timestamps[index]}";
+                        /// Add all channels' current received value (to be used as data for graphics) with a separator
                         for (int i = 0; i < stream.Data.Length; i++)
                         {
-                            var dataArr = stream.Data[i]; 
+                            var dataArr = stream.Data[i];
                             udpstring += $",{dataArr[index]}";
-                            //if (i < stream.Data.Length - 1) udpstring += ",";
                         }
 
+                        /// Add a D (Type:DataPacket) at the beginning if the packet so that the Mobile partner can catalog it on reception
                         udpbytes = ASCIIEncoding.ASCII.GetBytes("D" + udpstring);
-                        MobileCommunication.Send(udpbytes);
                     }
+
+                    /// Send the packet to the mobile partner
+                    await MobileCommunication.Send(udpbytes);
                 }
-            }
-
-            public void ConnectUdpStream()
-            {
-                IPEndPoint ep = new IPEndPoint(IPAddress.Parse(UdpStreamIp), UdpStreamPort); // endpoint where server is listening                
-                if (udpStreamClient != null && udpStreamClient.Client != null && !udpStreamClient.Client.Connected)
-                    udpStreamClient.Connect(ep);
-            }
-
-            /// <summary>
-            /// MOBILE_CHANGES close UDPClient 
-            /// </summary>
-            public void DisconnectUdpStream()
-            {
-                if (udpStreamClient!= null && udpStreamClient.Client != null && udpStreamClient.Client.Connected)
-                    udpStreamClient.Close();
             }
 
             public DataStream GetStream(StreamInfo streamInfo)
@@ -176,8 +156,8 @@ namespace DataManager
             }
 
             /// <summary>
-            /// MOBILE_CHANGES Add a method to clear the Streams
-            /// </summary>
+            ///  Clear the Streams 
+            /// </summary> MOBILE_CHANGES
             public void ClearStream()
             {
                 Streams.Clear();
@@ -215,9 +195,7 @@ namespace DataManager
 
             public void SaveRecord()
             {
-                //CHANGE
-                //var directory = $"{Record.DataPath}\\{Record.Project}\\{Record.Experiment}\\{Record.Session}\\{Record.Subject}";
-                var directory = $"{Record.DataPath}";
+                var directory = $"{Record.DataPath}"; ///MOBILE_CHANGES - REDUCED //var directory = $"{Record.DataPath}\\{Record.Project}\\{Record.Experiment}\\{Record.Session}\\{Record.Subject}";
                 if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 
                 string filenames = "";
@@ -225,15 +203,9 @@ namespace DataManager
                 {
                     if (stream.RecordedBytes > 0)
                     {
-                        //CHANGE
-                        //var subject = (Record.Subject != "") ? $"_{Record.Subject}" : "";
-                        //var filename = $"{Record.Session}{subject}_{stream.Name}_{stream.Type}";
-                        //filenames += filename + " ";
-
-
-                        var filename = $"{stream.Name}_{ stream.Type}";
-                        filenames += filename + " ";
-
+                        
+                        var filename = $"{stream.Name}_{ stream.Type}"; ///MOBILE_CHANGES - REDUCED //var subject = (Record.Subject != "") ? $"_{Record.Subject}" : ""; // var filename = $"{Record.Session}{subject}_{stream.Name}_{stream.Type}";
+                        filenames += filename + " ";                   
 
                         File.WriteAllText(directory + @"\" + filename + ".csv", stream.GetRecordData());
                         File.WriteAllText(directory + @"\" + filename + ".json", stream.GetRecordMeta());
@@ -245,16 +217,18 @@ namespace DataManager
                     Process.Start("explorer.exe", directory);
                 }
             }
+
+            /// <summary>
+            /// Saves a table with all button presses made on the mobile partner and shared with this application
+            /// while recording for event synchronization.  
+            /// </summary> MOBILE_CHANGES
+            /// <param name="steps"> List of button presses made on the mobile partner</param>
             public void SaveSteps(List<(DateTime, string)> steps)
             {
-                //CHANGE
-                //var directory = $"{Record.DataPath}\\{Record.Project}\\{Record.Experiment}\\{Record.Session}\\{Record.Subject}";
                 var directory = $"{Record.DataPath}";
-
                 if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 
                 StringBuilder csv = new StringBuilder();
-
                 foreach (var (t, s) in steps)
                 {
                     csv.AppendLine(t.ToString("HH:mm:ss:FFFF") + "," + s);

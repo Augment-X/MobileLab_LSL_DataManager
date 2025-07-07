@@ -50,8 +50,9 @@ namespace AugmentX_Mobile.ViewModel
 
         public static bool IsRecording { get; set; } = false;
 
-        private readonly ObservableCollection<ObservablePoint>[] ObservableValues = new ObservableCollection<ObservablePoint>[5];
-
+        private readonly ObservableCollection<ObservablePoint>[] ObservableValues = new ObservableCollection<ObservablePoint>[8];
+        private readonly SKColor[] ColorList = [SKColors.Red, SKColors.Blue, SKColors.Green, SKColors.Orange, SKColors.Purple, SKColors.Teal, SKColors.Brown, SKColors.Magenta];
+        
         public ControlViewModel()
         {
             for (int i = 0; i<ObservableValues.Length; i++)
@@ -60,14 +61,13 @@ namespace AugmentX_Mobile.ViewModel
                 Series.Add(
                     new LineSeries<ObservablePoint>(ObservableValues[i])
                     {
-                        Stroke = new SolidColorPaint(SKColors.Blue) { StrokeThickness = 2 },
+                        Stroke = new SolidColorPaint(ColorList[i]) { StrokeThickness = 2 },
+                        LineSmoothness = 0,
                         Fill = null,
                         GeometryFill = null,
                         GeometryStroke = null//new SolidColorPaint(SKColors.Blue) { StrokeThickness = 4 }
                     }
                     );
-
-                ((LineSeries<ObservablePoint>)Series[0]).Stroke = new SolidColorPaint(SKColors.Red) { StrokeThickness = 2 };
             }
         }
 
@@ -127,11 +127,11 @@ namespace AugmentX_Mobile.ViewModel
                     if (item.Father == ID && long.TryParse(values[0], out long value0) && double.TryParse(values[item.Index], out double value))
                     {
                         Series[i].Name = item.Father + ": " + item.Name;
-                        TimeSpan timestamp = new(value0 / 100);
-                        ObservableValues[i].Add(new() { Y = value, X = timestamp.TotalMilliseconds });
-                        if (ObservableValues[i].Count > 300) { ObservableValues[i].RemoveAt(0); }
-                        i++;
+                        TimeSpan timestamp = new(value0); 
+                        ObservableValues[i].Add(new() { Y = value, X = value0 });
+                        if (ObservableValues[i][ObservableValues[i].Count-1].X - ObservableValues[i][0].X > 5.0E9) { ObservableValues[i].RemoveAt(0); }
                     }
+                    i++;
                 }
 
                 //if (long.TryParse(values[0], out long value0) && double.TryParse(values[1], out double value1) && double.TryParse(values[2], out double value2) && double.TryParse(values[3], out double value3) && double.TryParse(values[4], out double value4) && double.TryParse(values[5], out double value5))
