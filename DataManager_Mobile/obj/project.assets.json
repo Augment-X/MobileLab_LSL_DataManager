@@ -222,29 +222,6 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
-      },
-      "libfmax-Csharp/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "lsl_csharp": "2.0.0"
-        },
-        "compile": {
-          "bin/placeholder/libfmax-Csharp.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/libfmax-Csharp.dll": {}
-        }
-      },
-      "lsl_csharp/2.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/lsl_csharp.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/lsl_csharp.dll": {}
-        }
       }
     }
   },
@@ -651,45 +628,35 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "libfmax-Csharp/1.0.0": {
-      "type": "project",
-      "path": "../Libs/libfmax-Csharp/libfmax-Csharp.csproj",
-      "msbuildProject": "../Libs/libfmax-Csharp/libfmax-Csharp.csproj"
-    },
-    "lsl_csharp/2.0.0": {
-      "type": "project",
-      "path": "../Libs/liblsl-Csharp/liblsl.csproj",
-      "msbuildProject": "../Libs/liblsl-Csharp/liblsl.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "C:\\Users\\Public\\Documents\\Github_AX\\MobileLab_LSL_DataManager\\Libs\\libfmax-Csharp\\libfmax-Csharp.csproj",
       "MathNet.Numerics >= 5.0.0",
       "ScottPlot.WinForms >= 4.1.45",
       "System.Drawing.Common >= 6.0.0",
-      "System.Text.Json >= 9.0.6",
-      "libfmax-Csharp >= 1.0.0"
+      "System.Text.Json >= 9.0.6"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rodol\\.nuget\\packages\\": {},
+    "C:\\Users\\tturcksi\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rodol\\OneDrive - Vrije Universiteit Brussel\\AugmentX\\DataManager - Mobile\\DataManager.csproj",
+      "projectUniqueName": "C:\\Users\\Public\\Documents\\Github_AX\\MobileLab_LSL_DataManager\\DataManager_Mobile\\DataManager.csproj",
       "projectName": "DataManager",
-      "projectPath": "C:\\Users\\rodol\\OneDrive - Vrije Universiteit Brussel\\AugmentX\\DataManager - Mobile\\DataManager.csproj",
-      "packagesPath": "C:\\Users\\rodol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rodol\\OneDrive - Vrije Universiteit Brussel\\AugmentX\\DataManager - Mobile\\obj\\",
+      "projectPath": "C:\\Users\\Public\\Documents\\Github_AX\\MobileLab_LSL_DataManager\\DataManager_Mobile\\DataManager.csproj",
+      "packagesPath": "C:\\Users\\tturcksi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Public\\Documents\\Github_AX\\MobileLab_LSL_DataManager\\DataManager_Mobile\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\rodol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tturcksi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -705,8 +672,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\rodol\\OneDrive - Vrije Universiteit Brussel\\AugmentX\\Libs\\libfmax-Csharp\\libfmax-Csharp.csproj": {
-              "projectPath": "C:\\Users\\rodol\\OneDrive - Vrije Universiteit Brussel\\AugmentX\\Libs\\libfmax-Csharp\\libfmax-Csharp.csproj"
+            "C:\\Users\\Public\\Documents\\Github_AX\\MobileLab_LSL_DataManager\\Libs\\libfmax-Csharp\\libfmax-Csharp.csproj": {
+              "projectPath": "C:\\Users\\Public\\Documents\\Github_AX\\MobileLab_LSL_DataManager\\Libs\\libfmax-Csharp\\libfmax-Csharp.csproj"
             }
           }
         }
@@ -721,7 +688,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net6.0-windows7.0": {
@@ -755,6 +722,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.36, 6.0.36]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[6.0.36, 6.0.36]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.36, 6.0.36]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.36, 6.0.36]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -763,8 +748,19 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'C:\\Users\\Public\\Documents\\Github_AX\\MobileLab_LSL_DataManager\\Libs\\libfmax-Csharp\\libfmax-Csharp.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "C:\\Users\\Public\\Documents\\Github_AX\\MobileLab_LSL_DataManager\\Libs\\libfmax-Csharp\\libfmax-Csharp.csproj",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    }
+  ]
 }

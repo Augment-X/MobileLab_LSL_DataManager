@@ -104,3 +104,6 @@ C:\Users\rodol\OneDrive - Vrije Universiteit Brussel\AugmentX\DataManager - Mobi
 C:\Users\rodol\OneDrive - Vrije Universiteit Brussel\AugmentX\DataManager - Mobile\obj\Debug\net6.0-windows\DataManager.pdb
 C:\Users\rodol\OneDrive - Vrije Universiteit Brussel\AugmentX\DataManager - Mobile\obj\Debug\net6.0-windows\DataManager.genruntimeconfig.cache
 C:\Users\rodol\OneDrive - Vrije Universiteit Brussel\AugmentX\DataManager - Mobile\obj\Debug\net6.0-windows\ref\DataManager.dll
+C:\Users\Public\Documents\Github_AX\MobileLab_LSL_DataManager\DataManager_Mobile\obj\Debug\net6.0-windows\DataManager.dll
+C:\Users\Public\Documents\Github_AX\MobileLab_LSL_DataManager\DataManager_Mobile\obj\Debug\net6.0-windows\refint\DataManager.dll
+C:\Users\Public\Documents\Github_AX\MobileLab_LSL_DataManager\DataManager_Mobile\obj\Debug\net6.0-windows\DataManager.pdb
